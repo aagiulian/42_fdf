@@ -6,7 +6,7 @@
 #    By: agiulian <arthur.giuliano@student.42.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/17 22:23:16 by agiulian          #+#    #+#              #
-#    Updated: 2017/01/27 15:55:54 by agiulian         ###   ########.fr        #
+#    Updated: 2017/02/08 13:59:09 by agiulian         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,8 @@ SRC = ft_atoi.c \
 	  ft_itoabase.c \
 	  ft_itoabase_cap.c \
 	  ft_uitoabase.c \
-	  ft_uitoabase_cap.c
+	  ft_uitoabase_cap.c \
+	  get_next_line.c
 
 HEAD = -Iincludes/
 
