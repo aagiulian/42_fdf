@@ -6,7 +6,7 @@
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 17:20:01 by agiulian          #+#    #+#             */
-/*   Updated: 2017/02/10 13:24:26 by agiulian         ###   ########.fr       */
+/*   Updated: 2017/03/22 16:46:30 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
-# include "libft/includes/libft.h"
-# include "libft/includes/get_next_line.h"
+# include "libft/libft/includes/libft.h"
+# include "libft/libft/includes/get_next_line.h"
+# include "libft/printf/ft_printf.h"
 
 typedef struct	s_fdf
 {

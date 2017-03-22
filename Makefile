@@ -6,7 +6,7 @@
 #    By: agiulian <arthur.giuliano@student.42.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/17 22:23:16 by agiulian          #+#    #+#              #
-#    Updated: 2017/02/07 17:45:49 by agiulian         ###   ########.fr        #
+#    Updated: 2017/03/22 16:49:56 by agiulian         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,28 +14,39 @@ CC = gcc
 
 NAME = fdf
 
-SRC = main.c
+SRC = main.c \
+	  parse.c \
+	  commands.c
 
-HEAD = -Ilibft/includes/ -I. -I /usr/X11/include -L /usr/X11/lib -l mlx -I framework OpenGL -framework AppKit
+HEAD = -Ilibft/includes/ -Iprintf/. -I. -I/usr/local/include
+
+LIB = -Llibft -lftprintf -L/usr/local/lib/
 
 ECHO = printf
 
-OBJECT = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 
-CFLAGS = $(HEAD) -l mlx -framework OpenGL -framework AppKit -O3 -g
+LIBUNIT = -lmlx -framework OpenGL -framework AppKit
 
-%.o	:	%.c 
-		@$(CC) $(CFLAGS) -o $@ -c $<&& $(ECHO) "\033[31m["$@"] \n\033[0m"
+CFLAGS = $(HEAD) -Wall -Werror -Wextra
+
+%.o	:	%.c
+		@$(CC) $(CFLAGS) -o $@ -c $<
 
 all: $(NAME)
 
-$(NAME): $(OBJECT)
-	gcc -o $(NAME) $(OBJECT)
+$(NAME): $(OBJ)
+	@make -C libft
+	@$(CC) $(CFLAGS) -o $(NAME) $(LIB) $(OBJ) $(LIBUNIT)
+	@$(ECHO) "\033[32m[Compiling fdf Project]\033[0m\n"
 
 clean:
-	@rm -f $(OBJECT) && $(ECHO) "\033[32m[Deleting objects]\033[0m\n"
+	@make clean -C libft
+	@rm -f $(OBJ) && $(ECHO) "\033[32m[Deleting fdf objects]\033[0m\n"
 
 fclean: clean
-	rm -f $(NAME)
+	@make fclean -C libft
+	@rm -f $(NAME)
+	@$(ECHO) "\033[32m[Deleting fdf Binary]\033[0m\n"
 
 re: fclean all

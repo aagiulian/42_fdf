@@ -6,7 +6,7 @@
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 17:50:27 by agiulian          #+#    #+#             */
-/*   Updated: 2017/02/10 13:25:35 by agiulian         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:34:57 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		ft_parsemap(int fd, t_fdf *params)
 	char	**tab_s;
 
 	i = 0;
+	params->tab = NULL;
 	while (get_next_line(fd, &line))
 	{
 		j = 0;
@@ -36,12 +37,13 @@ int		ft_parsemap(int fd, t_fdf *params)
 		while (tab_s[j])
 		{
 			params->tab[i][j] = ft_atoi(tab_s[j]);
-			printf("%i ", params->tab[i][j]);
+			ft_printf("%i ", params->tab[i][j]);
 			j++;
 		}
+		ft_tabdel(&tab_s);
 		if (j != params->width)
 			return (0);
-		printf("\n");
+		ft_printf("\n");
 		i++;
 	}
 	return (1);
