@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabdel.c                                        :+:      :+:    :+:   */
+/*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 20:52:56 by agiulian          #+#    #+#             */
-/*   Updated: 2017/03/23 17:33:01 by agiulian         ###   ########.fr       */
+/*   Created: 2017/03/23 19:04:27 by agiulian          #+#    #+#             */
+/*   Updated: 2017/03/23 19:43:44 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_tabdel(char ***tab_to_free)
+void	calcul(t_fdf *params)
 {
-	int 	i;
-	char 	**tab;
-
-	tab = *tab_to_free;
+	int	i;
+	int	j;
+	
 	i = 0;
-	if (tab == NULL || *tab == NULL)
-		return ;
-	while (tab[i])
+	while (i < params->)
 	{
-		ft_strdel(&tab[i]);
-		i++;
+		while (j < params->width)
+		{
+			params->tab
+		}
 	}
-	free(tab);
-	**tab_to_free = NULL;
 }
