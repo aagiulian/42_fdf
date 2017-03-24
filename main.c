@@ -6,7 +6,7 @@
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 17:22:29 by agiulian          #+#    #+#             */
-/*   Updated: 2017/03/23 19:57:40 by agiulian         ###   ########.fr       */
+/*   Updated: 2017/03/24 00:55:04 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int main(int argc, char **argv)
 	if ((params->win_ptr = mlx_new_window(params->mlx_ptr, 1000, 1000, "fdf")) == NULL)
 		return (EXIT_FAILURE);
 	mlx_key_hook(params->win_ptr, ft_commands, params);
+	calcul(params);
+	mlx_put_image_to_window(params->mlx_ptr, params->win_ptr, params->img_ptr, 10, 10);
 	//mlx_hook(params->win_ptr, 17, (1L<<17), ft_commands, params);
 	mlx_loop(params->win_ptr);
 	return (EXIT_SUCCESS);
