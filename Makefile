@@ -6,7 +6,7 @@
 #    By: agiulian <arthur.giuliano@student.42.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/17 22:23:16 by agiulian          #+#    #+#              #
-#    Updated: 2017/03/22 16:49:56 by agiulian         ###   ########.fr        #
+#    Updated: 2017/03/24 14:06:02 by agiulian         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = fdf
 
 SRC = main.c \
 	  parse.c \
-	  commands.c
+	  commands.c \
+	  calcul.c
 
 HEAD = -Ilibft/includes/ -Iprintf/. -I. -I/usr/local/include
 
@@ -28,7 +29,7 @@ OBJ = $(SRC:.c=.o)
 
 LIBUNIT = -lmlx -framework OpenGL -framework AppKit
 
-CFLAGS = $(HEAD) -Wall -Werror -Wextra
+CFLAGS = $(HEAD) -g
 
 %.o	:	%.c
 		@$(CC) $(CFLAGS) -o $@ -c $<

@@ -6,7 +6,7 @@
 #    By: agiulian <arthur.giuliano@student.42.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/17 22:23:16 by agiulian          #+#    #+#              #
-#    Updated: 2017/03/17 18:49:18 by agiulian         ###   ########.fr        #
+#    Updated: 2017/03/24 14:06:16 by agiulian         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,7 @@ ECHO = printf
 
 OBJECT = $(SRC:.c=.o)
 
-CFLAGS = $(HEAD) -O3 -Wall -Werror -Wextra
+CFLAGS = $(HEAD) -g -O3 -Wall -Werror -Wextra
 
 %.o	:	%.c 
 		@$(CC) $(CFLAGS) -o $@ -c $<
