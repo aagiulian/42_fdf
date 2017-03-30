@@ -6,7 +6,7 @@
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 17:22:29 by agiulian          #+#    #+#             */
-/*   Updated: 2017/03/24 16:21:21 by agiulian         ###   ########.fr       */
+/*   Updated: 2017/03/30 19:55:02 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if ((params->mlx_ptr = mlx_init()) == NULL)
 		return (EXIT_FAILURE);
-	if ((params->win_ptr = mlx_new_window(params->mlx_ptr, 1000, 1000, "fdf")) == NULL)
+	if ((params->win_ptr = mlx_new_window(params->mlx_ptr, 800, 600, "fdf")) == NULL)
 		return (EXIT_FAILURE);
+	init_params(params);
 	calcul(params);
-	if (!mlx_put_image_to_window(params->mlx_ptr, params->win_ptr, params->img_ptr, 100, 100))
+	if (!mlx_put_image_to_window(params->mlx_ptr, params->win_ptr, params->img_ptr, 0, 0))
 		return (0);
 	ft_putstr("OL");
 	//mlx_hook(params->win_ptr, 17, (1L<<17), ft_commands, params);

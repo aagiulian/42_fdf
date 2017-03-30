@@ -6,7 +6,7 @@
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 19:04:27 by agiulian          #+#    #+#             */
-/*   Updated: 2017/03/24 19:30:29 by agiulian         ###   ########.fr       */
+/*   Updated: 2017/03/31 00:35:31 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ void	put_pxl_to_img(t_fdf *params, int x, int y, int colors)
 	unsigned int	color;
 	int				zero;
 
+	x += params->mov_x;
+	y += params->mov_y;
+	if (x >= 400 || x <= -400 || y <= -300 || y >= 300)
+		return ;
 	zero = 4 * 800 * 600 / 2 + 400 * 4;
 	ft_printf("result = %i\n", zero + 4 * 800 * (int)y + (int)x * 4);
 	color = mlx_get_color_value(params->mlx_ptr, colors);
@@ -93,7 +97,7 @@ void	ft_bresenham(t_fdf *params, int x2, int y2, int x1, int y1)
 	int		e[2];
 	int		x0;
 	int		y0;
-
+	
 	x0 = x2;
 	y0 = y2;
 	tabx[0] = abs(x1 - x0);
@@ -126,15 +130,15 @@ void	calcul(t_fdf *params)
 		j = 0;
 		while (j < params->col)
 		{
-			x = (sqrt(2.0) / 2) * (i - j) * 5;
-			y = sqrt(2.0 / 3) * params->tab[i][j] - 1 / sqrt(6) * (i + j) * 5;
-	/*		if (i + 1 < params->line)
-				ft_bresenham(params, (int)x, (int)y, (int)((sqrt(2.0) / 2) * (i + 1 - j) * 50), (int)(sqrt(2.0 / 3) * params->tab[i + 1][j] - 1 / sqrt(6) * (i + 1 + j) * 50));
+			x =  - ((sqrt(2.0) / 2) * (i - j) * params->z);
+			y =  - ((sqrt(2.0 / 3) * (params->tab[i][j] * params->d) - 1 / sqrt(6) * (i + j)) * params->z);
+			if (i + 1 < params->line)
+				ft_bresenham(params, (int)x, (int)y, (int)-(((sqrt(2.0) / 2) * ((i + 1) - j) * params->z)), (int)-(((sqrt(2.0 / 3) * (params->tab[i + 1][j] * params->d) - 1 / sqrt(6) * ((i + 1) + j)) * params->z)));
 			if (j + 1 < params->col)
-				ft_bresenham(params, (int)x, (int)y, (int)((sqrt(2.0) / 2) * (i - j + 1) * 50), (int)(sqrt(2.0 / 3) * params->tab[i][j + 1] - 1 / sqrt(6) * (i + j + 1) * 50));*/
+				ft_bresenham(params, (int)x, (int)y, (int)-(((sqrt(2.0) / 2) * (i - (j + 1)) * params->z)), (int)-(((sqrt(2.0 / 3) * (params->tab[i][j + 1] * params->d) - 1 / sqrt(6) * (i + (j + 1))) * params->z)));
 			printf("x = %f y = %f\n", x, y);
-			if (x < 300 && x > -300 && y > -200 && y > -200)
-				put_pxl_to_img(params, (int)x, (int)y, 0xFFFFFF);
+		//	if (x < 300 && x > -300 && y > -200 && y > -200)
+		//		put_pxl_to_img(params, (int)x, (int)y, 0xFFFFFF);
 			j++;
 		}
 		i++;

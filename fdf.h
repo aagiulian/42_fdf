@@ -6,7 +6,7 @@
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 17:20:01 by agiulian          #+#    #+#             */
-/*   Updated: 2017/03/24 00:31:14 by agiulian         ###   ########.fr       */
+/*   Updated: 2017/03/31 00:17:07 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,15 @@ typedef struct	s_fdf
 	int		col;
 	int		line;
 	int		**tab;
+	int		z;
+	int		d;
+	int		mov_x;
+	int		mov_y;
 }				t_fdf;
 
 int				ft_commands(int keycode, t_fdf *params);
 int				ft_parse_map(t_fdf *params, char *file);
 void			calcul(t_fdf *params);
+void			init_params(t_fdf *params);
 
 #endif

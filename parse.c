@@ -6,7 +6,7 @@
 /*   By: agiulian <agiulian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 17:50:27 by agiulian          #+#    #+#             */
-/*   Updated: 2017/03/23 20:19:55 by agiulian         ###   ########.fr       */
+/*   Updated: 2017/03/31 00:49:29 by agiulian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,35 @@ int		ft_parse_coord(int fd, t_fdf *params)
 	char	*line;
 	int		i;
 	int		j;
+	int		k;
 	char	**tab_s;
 
+	k = 0;
 	i = 0;
 	params->tab = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
 		j = 0;
 		tab_s = ft_strsplit(line, ' ');
+		k++;
 		if (!params->tab)
 		{
 			i = -1;
 			params->col = ft_tablen(tab_s);
+			ft_printf("col = %i, line = %i\n", params->col, params->line);
 			params->tab = (int**)malloc(sizeof(int*) * params->line);
-			while (++i < params->col)
+			while (++i < params->line)
 				params->tab[i] = (int*)malloc(sizeof(int) * params->col);
 			i = 0;
 		}
 		while (tab_s[j])
 		{
 			params->tab[i][j] = ft_atoi(tab_s[j]);
+			ft_strdel(&tab_s[j]);
 			ft_printf("%i ", params->tab[i][j]);
 			j++;
 		}
-		ft_tabdel(&tab_s);
+		free(tab_s);
 		ft_strdel(&line);
 		if (j != params->col)
 			return (-1);
